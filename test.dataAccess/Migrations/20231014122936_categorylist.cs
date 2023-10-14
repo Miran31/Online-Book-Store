@@ -2,10 +2,12 @@
 
 #nullable disable
 
-namespace testweb.Migrations
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace test.dataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addtabletodb : Migration
+    public partial class categorylist : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,12 +18,22 @@ namespace testweb.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     DisplayOrder = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.ID);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "ID", "DisplayOrder", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, "Shirt" },
+                    { 2, 1, "Pant" },
+                    { 3, 1, "Tupt" }
                 });
         }
 

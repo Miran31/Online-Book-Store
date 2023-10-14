@@ -2,20 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using testweb.Data;
+using test.dataAccess.Data;
 
 #nullable disable
 
-namespace testweb.Migrations
+namespace test.dataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231006135838_addtabletodb")]
-    partial class addtabletodb
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +21,7 @@ namespace testweb.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("testweb.Models.Category", b =>
+            modelBuilder.Entity("test.Models.Category", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -37,11 +34,32 @@ namespace testweb.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            DisplayOrder = 1,
+                            Name = "Shirt"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            DisplayOrder = 1,
+                            Name = "Pant"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            DisplayOrder = 1,
+                            Name = "Tupt"
+                        });
                 });
 #pragma warning restore 612, 618
         }

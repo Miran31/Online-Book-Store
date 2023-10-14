@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using testweb.Models;
+using test.Models;
 
-namespace testweb.Data
+namespace test.dataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
