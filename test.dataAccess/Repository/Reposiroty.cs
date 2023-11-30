@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using test.dataAccess.Data;
 using test.dataAccess.Repository.IRepository;
 
@@ -26,8 +21,7 @@ namespace test.dataAccess.Repository
 
         public T Get(Expression<Func<T, bool>> filter)
         {
-            IQueryable<T> query = dbSet;
-            query.Where(filter);
+            IQueryable<T> query = dbSet.Where(filter);
             return query.FirstOrDefault();
         }
 

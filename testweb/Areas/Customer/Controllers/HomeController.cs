@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using test.Models;
 
-namespace testweb.Controllers
+namespace testweb.Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {

@@ -13,11 +13,12 @@ namespace test.dataAccess.Repository
     public class CategoryRepository : Reposiroty<Category>, ICategoryRepository
     {
         private readonly ApplicationDbContext _db;
-        public CategoryRepository(ApplicationDbContext db) :base(db)
+        public CategoryRepository(ApplicationDbContext db) : base(db)
         {
-            _db=db;
+            _db = db;
         }
-        public void save()
+
+        public void Save()
         {
             _db.SaveChanges();
         }

@@ -3,11 +3,12 @@ using test.dataAccess.Data;
 using test.dataAccess.Repository.IRepository;
 using test.Models;
 
-namespace testweb.Controllers
+namespace testweb.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
         private readonly ICategoryRepository _catrepo;
+
         public CategoryController(ICategoryRepository catrepo)
         {
             _catrepo = catrepo;
@@ -18,7 +19,8 @@ namespace testweb.Controllers
             //categoryList.ForEach(Console.WriteLine);
             return View(categoryList);
         }
-        public IActionResult Create() {
+        public IActionResult Create()
+        {
             return View();
         }
         [HttpPost]
@@ -26,25 +28,24 @@ namespace testweb.Controllers
         {
             if (obj.Name == obj.DisplayOrder.ToString())
             {
-                ModelState.AddModelError("Name","Cannot be same");
+                ModelState.AddModelError("Name", "Cannot be same");
             }
             if (ModelState.IsValid)
             {
                 _catrepo.Add(obj);
-                _catrepo.save();
+                _catrepo.Save();
                 TempData["Success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
             return View();
         }
-        public IActionResult Edit(int? id) {
+        public IActionResult Edit(int? id)
+        {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
             Category? categoryformDb = _catrepo.Get(u => u.ID == id);
-            //Category? categoryfromDb1 = _db.Categories.FirstOrDefault(u=>u.ID == id);
-            //Category? categoryformDb2 = _db.Categories.Where(u=>u.ID==id).FirstOrDefault();
             if (categoryformDb == null)
             {
                 return NotFound();
@@ -57,7 +58,7 @@ namespace testweb.Controllers
             if (ModelState.IsValid)
             {
                 _catrepo.update(obj);
-                _catrepo.save();
+                _catrepo.Save();
                 TempData["Success"] = "Category Edited Successfully";
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,7 @@ namespace testweb.Controllers
         }
         public IActionResult Delete(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
@@ -76,7 +77,7 @@ namespace testweb.Controllers
             }
             return View(category);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
             Category? category = _catrepo.Get(u => u.ID == id);
@@ -85,7 +86,7 @@ namespace testweb.Controllers
                 return NotFound();
             }
             _catrepo.Remove(category);
-            _catrepo.save();
+            _catrepo.Save();
             TempData["Success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }
