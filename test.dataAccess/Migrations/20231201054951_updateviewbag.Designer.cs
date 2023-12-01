@@ -11,8 +11,8 @@ using test.dataAccess.Data;
 namespace test.dataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231130035256_updateDatabase")]
-    partial class updateDatabase
+    [Migration("20231201054951_updateviewbag")]
+    partial class updateviewbag
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,15 +67,18 @@ namespace test.dataAccess.Migrations
 
             modelBuilder.Entity("test.Models.Product", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Author")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -100,83 +103,111 @@ namespace test.dataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("imageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             Author = "Billy Spark",
+                            CategoryID = 1,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "SWD9999001",
                             ListPrice = 99,
                             Price = 90,
                             Price100 = 80,
                             Price50 = 85,
-                            Title = "Fortune of Time"
+                            Title = "Fortune of Time",
+                            imageUrl = ""
                         },
                         new
                         {
-                            ID = 2,
+                            Id = 2,
                             Author = "Nancy Hoover",
+                            CategoryID = 1,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "CAW777777701",
                             ListPrice = 40,
                             Price = 30,
                             Price100 = 20,
                             Price50 = 25,
-                            Title = "Dark Skies"
+                            Title = "Dark Skies",
+                            imageUrl = ""
                         },
                         new
                         {
-                            ID = 3,
+                            Id = 3,
                             Author = "Julian Button",
+                            CategoryID = 2,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "RITO5555501",
                             ListPrice = 55,
                             Price = 50,
                             Price100 = 35,
                             Price50 = 40,
-                            Title = "Vanish in the Sunset"
+                            Title = "Vanish in the Sunset",
+                            imageUrl = ""
                         },
                         new
                         {
-                            ID = 4,
+                            Id = 4,
                             Author = "Abby Muscles",
+                            CategoryID = 2,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "WS3333333301",
                             ListPrice = 70,
                             Price = 65,
                             Price100 = 55,
                             Price50 = 60,
-                            Title = "Cotton Candy"
+                            Title = "Cotton Candy",
+                            imageUrl = ""
                         },
                         new
                         {
-                            ID = 5,
+                            Id = 5,
                             Author = "Ron Parker",
+                            CategoryID = 3,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "SOTJ1111111101",
                             ListPrice = 30,
                             Price = 27,
                             Price100 = 20,
                             Price50 = 25,
-                            Title = "Rock in the Ocean"
+                            Title = "Rock in the Ocean",
+                            imageUrl = ""
                         },
                         new
                         {
-                            ID = 6,
+                            Id = 6,
                             Author = "Laura Phantom",
+                            CategoryID = 3,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "FOT000000001",
                             ListPrice = 25,
                             Price = 23,
                             Price100 = 20,
                             Price50 = 22,
-                            Title = "Leaves and Wonders"
+                            Title = "Leaves and Wonders",
+                            imageUrl = ""
                         });
+                });
+
+            modelBuilder.Entity("test.Models.Product", b =>
+                {
+                    b.HasOne("test.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

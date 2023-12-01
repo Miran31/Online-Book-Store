@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model Product
+﻿@model ProductVM
 <div class="row justify-content-center">
     <div class="col-10">
         <div class="card shadow border-0 mt-4">
@@ -15,55 +10,54 @@
                 </div>
             </div>
             <div class="card-body p-4">
-                <form method="post" class="row">
-                    <input asp-for="Id" hidden value="0"/>
+                <form method="post" class="row" enctype="multipart/form-data">
+                    <input asp-for="product.Id" hidden/>
+                    <input asp-for="product.imageUrl" hidden/>
                     <div class="row">
                         <div class="col-10">
                             <div class="border pt-3">
                                 <div class="py-2">
-                                    <input type="text" asp-for="Title" placeholder="Title" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                    <input type="text" asp-for="product.Title" placeholder="Title" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.Title" class="text-danger"></span>
                                 </div>
                                 <div class="py-2">
-                                    <textarea asp-for="Description" placeholder="Discription" class="form-control form-floating shadow border-0"></textarea>
+                                    <textarea asp-for="product.Description" placeholder="Discription" class="form-control form-floating shadow border-0"></textarea>
 
                                 </div>
                                 <div class="py-2">
-                                    <input type="text" asp-for="ISBN" placeholder="ISBN" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="ISBN" class="text-danger"></span>
+                                    <input type="text" asp-for="product.ISBN" placeholder="ISBN" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.ISBN" class="text-danger"></span>
                                 </div>
                                 <div class="py-2">
-                                    <input type="text" asp-for="Author" placeholder="Author" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="Author" class="text-danger"></span>
+                                    <input type="text" asp-for="product.Author" placeholder="Author" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.Author" class="text-danger"></span>
                                 </div>
                                 <div class="py-2">
-                                    <input type="number" asp-for="ListPrice" placeholder="ListPrice" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="ListPrice" class="text-danger"></span>
+                                    <input type="number" asp-for="product.ListPrice" placeholder="ListPrice" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.ListPrice" class="text-danger"></span>
                                 </div>
                                 <div class="py-2">
-                                    <input type="text" asp-for="Price" placeholder="Price for 1-50" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                    <input type="text" asp-for="product.Price" placeholder="Price for 1-50" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.Price" class="text-danger"></span>
                                 </div>
                                 <div class="py-2">
-                                    <input type="text" asp-for="Price50" placeholder="Price for 50+" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="Price50" class="text-danger"></span>
+                                    <input type="text" asp-for="product.Price50" placeholder="Price for 50+" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.Price50" class="text-danger"></span>
                                 </div>
                                 <div class="py-2">
-                                    <input type="text" asp-for="Price100" placeholder="Price for 100+" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="Price100" class="text-danger"></span>
+                                    <input type="text" asp-for="product.Price100" placeholder="Price for 100+" class="form-control form-floating shadow border-0" />
+                                    <span asp-validation-for="product.Price100" class="text-danger"></span>
                                 </div>
-                                @* <div class="py-2">
-                                    <select asp-for="CategoryID" asp-items="ViewBag.Categori" class="form-control form-floating shadow border-0">
+                                <div class="py-2">
+                                    <select asp-for="@Model.product.CategoryID" asp-items="@Model.CategoryList" class="form-control form-floating shadow border-0">
                                         <option disabled selected>
                                             --Select Category--
                                         </option>
                                     </select>
-                                    <span asp-validation-for="CategoryID" class="text-danger"></span>
-                                </div> *@
-                                @* <div class="py-2">
-                                    <input type="file" name="file" class="form-control form-floating shadow border-0" />
-                                    <span asp-validation-for="imageUrl" class="text-danger"></span>
-                                </div> *@
+                                </div>
+                                <div class="py-2">
+                                    <input type="file" name="file" class="form-control form-floating shadow border-0" placeholder="image" />
+                                </div>
                                 <div class="row mt-5">
                                     <div class="col-6">
                                         <button type="submit" class="btn btn-primary form-control">Create</button>
@@ -74,10 +68,10 @@
                                 </div>
                             </div>
                         </div>
-                        @* <div class="col-2">
-                            <p>image</p>
-                        </div> *@
-                    </div> 
+                        <div class="col-2">
+                            <img src="@Model.product.imageUrl" width="100%" alt="image here"/>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

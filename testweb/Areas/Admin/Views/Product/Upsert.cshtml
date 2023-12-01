@@ -5,13 +5,13 @@
             <div class="card-header bg-secondary bg-gradient m-lg-0 py3">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2 class="text-white py-2">Update Category</h2>
+                        <h2 class="text-white py-2">@(Model.Id!=0?"Update":"Create") Category</h2>
                     </div>
                 </div>
             </div>
             <div class="card-body p-4">
                 <form method="post" class="row">
-                    <input asp-for="Id" hidden value="0" />
+                    @* <input asp-for="Id" hidden value="0" /> *@
                     <div class="row">
                         <div class="col-10">
                             <div class="border pt-3">
@@ -61,7 +61,14 @@
                                 </div> *@
                                 <div class="row mt-5">
                                     <div class="col-6">
-                                        <button type="submit" class="btn btn-primary form-control">Create</button>
+                                        @if (Model.Id == 0)
+                                        {
+                                            <button type="submit" class="btn btn-primary form-control">Create</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-primary form-control">Update</button>
+                                        }
                                     </div>
                                     <div class="col-6">
                                         <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary form-control">Back to List</a>

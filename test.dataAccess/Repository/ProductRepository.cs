@@ -20,8 +20,7 @@ namespace test.dataAccess.Repository
 
         public void Update(Product product)
         {
-            _db.Attach(product);
-            _db.Entry(product).State=EntityState.Modified;
+            _db.Update(product);
         }
     }
 }
