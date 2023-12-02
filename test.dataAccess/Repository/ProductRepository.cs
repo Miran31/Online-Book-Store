@@ -20,7 +20,19 @@ namespace test.dataAccess.Repository
 
         public void Update(Product product)
         {
-            _db.Update(product);
+            var productFromDb = _db.Products.FirstOrDefault(u=>u.Id == product.Id);
+            if (productFromDb != null)
+            {
+                productFromDb.ISBN=product.ISBN;
+                productFromDb.ListPrice = product.ListPrice;
+                productFromDb.Price = product.Price;
+                productFromDb.Price100 = product.Price100;
+                productFromDb.Price50 = product.Price50;
+                productFromDb.Author = product.Author;
+                productFromDb.Description = product.Description;
+                productFromDb.CategoryID = product.CategoryID;
+                productFromDb.Title = product.Title;
+            }
         }
     }
 }
