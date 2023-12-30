@@ -20,7 +20,7 @@ namespace testweb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Product> ProductList = _productRepository.GetAll().ToList();
+            List<Product> ProductList = _productRepository.GetAll(includeProperty:"Category").ToList();
             return View(ProductList);
         }
         //public IActionResult Upsert(int? id)
@@ -131,20 +131,43 @@ namespace testweb.Areas.Admin.Controllers
             }
             return View();
         }
+        //public IActionResult Delete(int? id)
+        //{
+        //    if(id == null || id==0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    Product products = _productRepository.Get(u=>u.Id == id);
+        //    if (products == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    _productRepository.Remove(products);
+        //    _productRepository.Save();
+        //    return RedirectToAction("Index");
+        //}
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll() {
+            List<Product> ProductList = _productRepository.GetAll(includeProperty: "Category").ToList();
+            return Json(new { data = ProductList });
+        }
         public IActionResult Delete(int? id)
         {
-            if(id == null || id==0)
+            var producttobeDeleted = _productRepository.Get(u=>u.Id==id);
+            if(producttobeDeleted == null)
             {
-                return NotFound();
+                return Json(new {success = false,message="error while deleting"});
             }
-            Product products = _productRepository.Get(u=>u.Id == id);
-            if (products == null)
+            var oldimagePath = Path.Combine(_webHostEnvironment.WebRootPath, producttobeDeleted.imageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(oldimagePath))
             {
-                return NotFound();
+                System.IO.File.Delete(oldimagePath);
             }
-            _productRepository.Remove(products);
+            _productRepository.Remove(producttobeDeleted);
             _productRepository.Save();
-            return RedirectToAction("Index");
+            return Json(new { success = true, message = "product deleted" });
         }
+        #endregion
     }
 }

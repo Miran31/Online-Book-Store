@@ -39,7 +39,7 @@ namespace test.Models
         [ForeignKey("CategoryID")]
         [ValidateNever]
         public Category Category { get; set; }
-
+        [ValidateNever]
         public string? imageUrl { get; set; }
     }
 }

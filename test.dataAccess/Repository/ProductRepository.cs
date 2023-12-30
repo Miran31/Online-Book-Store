@@ -32,6 +32,10 @@ namespace test.dataAccess.Repository
                 productFromDb.Description = product.Description;
                 productFromDb.CategoryID = product.CategoryID;
                 productFromDb.Title = product.Title;
+                if(product.imageUrl != null)
+                {
+                    productFromDb.imageUrl = product.imageUrl;
+                }
             }
         }
     }
