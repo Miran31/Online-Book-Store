@@ -5,6 +5,7 @@ using test.Models;
 
 namespace testweb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryRepository _catrepo;

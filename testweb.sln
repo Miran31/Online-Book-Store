@@ -1,15 +1,15 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testweb", "testweb\testweb.csproj", "{650190AC-A95A-48E3-B829-0B4209767EEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.dataAccess", "test.dataAccess\test.dataAccess.csproj", "{0C733331-7591-4369-A81B-99C00D6EBA47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test.dataAccess", "test.dataAccess\test.dataAccess.csproj", "{0C733331-7591-4369-A81B-99C00D6EBA47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.Models", "test.Models\test.Models.csproj", "{E63004FE-3AE7-4F34-B5A1-E0C5D6981ECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test.Models", "test.Models\test.Models.csproj", "{E63004FE-3AE7-4F34-B5A1-E0C5D6981ECE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.Utility", "test.Utility\test.Utility.csproj", "{561B10F7-380E-49C9-96C6-87A51303C66E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test.Utility", "test.Utility\test.Utility.csproj", "{561B10F7-380E-49C9-96C6-87A51303C66E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
