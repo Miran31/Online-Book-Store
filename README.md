@@ -47,9 +47,7 @@ To get started with Book Haven, follow these steps:
 
 Explore Book Haven live at [https://bookhaven.somee.com/](https://bookhaven.somee.com/)
 
-## Contributing
 
-Contributions to Book Haven are welcome! If you'd like to contribute, please follow our [Contribution Guidelines](CONTRIBUTING.md).
 
 ## License
 
