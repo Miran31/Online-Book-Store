@@ -20,12 +20,18 @@ Welcome to Book Haven, an online bookstore built with ASP.NET Core where you can
 - **Product Management:** Admins can manage products, including adding, editing, and deleting products with multiple images.
 - **Order and User Management:** Admins can view order details and user information for better administration.
 
-## Technologies Used
+## Technology Used
 
-- **ASP.NET Core:** Web application framework for building robust, scalable web applications.
-- **Entity Framework Core:** Object-relational mapping framework for interacting with the database.
-- **HTML, CSS, JavaScript:** Frontend technologies for building the user interface.
-- **Microsoft SQL Server:** Relational database management system for storing application data.
+### Frontend:
+- **HTML:** Markup language for structuring web pages.
+- **CSS:** Style sheet language for designing the appearance of web pages.
+- **JavaScript:** Programming language for adding interactivity and dynamic behavior to web pages.
+- **Bootstrap:** Frontend framework for building responsive and mobile-first websites.
+
+### Backend:
+- **ASP.NET Core:** Backend framework for building web applications and APIs.
+- **Entity Framework Core:** Object-relational mapping (ORM) framework for interacting with databases.
+- **Microsoft SQL Server:** Relational database management system for storing and managing application data.
 
 ## Getting Started
 
