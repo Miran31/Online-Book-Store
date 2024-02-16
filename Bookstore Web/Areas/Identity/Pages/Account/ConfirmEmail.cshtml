@@ -1,0 +1,27 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="card rounded shadow">
+                <div class="card-body text-center mt-4">
+                    <h3> Email Confirmed. You can close this page or you can Login.</h3>
+                    <div class="col-12 text-center mt-5">
+                        <a class="btn btn-primary d-flex" class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["title"] = "Company List";
+}
+@model List<Company>
+<partial name="_Notification" />
+<div class="row justify-content-center">
+    <div class="col-10">
+        <div class="card shadow border-0 mt-4">
+            <div class="card-header bg-secondary bg-gradient m-lg-0 py3">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="text-white py-2">Product List</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="row justify-content-end mb-3">
+                    <div class="col-6 text-end">
+                        <a asp-controller="Company" asp-action="Create" class="btn btn-outline-primary rounded-3">
+                            <i class="bi bi-plus-circle"></i> Create new Company
+                        </a>
+                    </div>
+                </div>
+                <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Phone Number</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/js/Company.js"></script>
+}

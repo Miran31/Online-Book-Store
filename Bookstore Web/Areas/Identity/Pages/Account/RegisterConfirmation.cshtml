@@ -1,0 +1,42 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="card rounded form-floating">
+                        <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+                            <div class="col-12 text-center">
+                                <h2 class="text-white">Register confirmation</h2>
+                            </div>
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            Simply click this button to confirm your account.
+                            <div class="col-12 text-center mt-5">
+                                <a class="justify-content-center btn btn-primary d-flex" id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        // <p>
+        //     Just Simply complete this email.
+        //     This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+        //     Normally this would be emailed: 
+        // </p>
+    }
+    else
+    {
+        <p>
+            Please check your email to confirm your account.
+        </p>
+    }
+}
+
