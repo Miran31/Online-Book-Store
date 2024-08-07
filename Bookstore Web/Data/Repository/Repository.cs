@@ -32,9 +32,13 @@ namespace Bookstore_Web.Data.Repository
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll(string? includeProperty = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperty = null)
         {
             IQueryable<T> query = dbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
             if (!string.IsNullOrEmpty(includeProperty))
             {
                 foreach (var i in includeProperty.Split(',', StringSplitOptions.RemoveEmptyEntries))
